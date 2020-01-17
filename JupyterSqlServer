@@ -1,0 +1,7 @@
+import pypyodbc as pyo
+dbConfig = {'driver':'SQL Server','Server':"CALUMO-949324",'Database':"Calumo",'username':"SPF\laxman.baral",'password': "mypassword"}
+con = pyo.connect(**dbConfig)
+cursor = con.cursor()
+cursor.execute( "SELECT * FROM dbo.Users")
+data = cursor.fetchall()
+print(data)
