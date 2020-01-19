@@ -5,3 +5,17 @@ cursor = con.cursor()
 cursor.execute( "SELECT * FROM dbo.Users")
 data = cursor.fetchall()
 print(data)
+
+
+#import as DF
+
+import pandas as pd
+import sqlalchemy as sql
+import pyodbc
+
+server = 'LAXMAN'
+driver = 'SQL+Server'
+db = 'mybooks'
+myQuery = '''SELECT *from books'''
+engine = sql.create_engine('mssql+pyodbc://{}/{}?driver={}'.format(server, db, driver))
+df = pd.read_sql_query(myQuery, engine)
